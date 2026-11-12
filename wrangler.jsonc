@@ -1,0 +1,17 @@
+// Publicação no Cloudflare: o Worker atende /api/google/* (login) e o resto são os arquivos do app (dist/).
+{
+  "name": "ficharedonda",
+  "main": "worker/index.ts",
+  "compatibility_date": "2026-10-01",
+  "compatibility_flags": ["nodejs_compat"],
+  "assets": {
+    "directory": "./dist",
+    "binding": "ASSETS",
+    "not_found_handling": "single-page-application",
+    "html_handling": "none",
+    "run_worker_first": ["/api/*"]
+  },
+  // GOOGLE_CLIENT_ID (variável) e GOOGLE_CLIENT_SECRET (segredo) ficam no painel da Cloudflare e não são
+  // apagados a cada publicação. Sem GOOGLE_CLIENT_SECRET, o login do Google volta a valer só 1 hora.
+  "keep_vars": true
+}
