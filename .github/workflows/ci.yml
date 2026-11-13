@@ -1,9 +1,9 @@
 name: CI
 
+# Os testes rodam localmente (npm run typecheck, lint, test, build, e2e).
+# Aqui fica só o botão "Run workflow", para rodar quando for preciso.
 on:
-  push:
-    branches: [main]
-  pull_request:
+  workflow_dispatch:
 
 permissions:
   contents: read
